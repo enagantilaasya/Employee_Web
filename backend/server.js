@@ -6,7 +6,7 @@ const app = exp();
 //add cors middleware
 app.use(
   cors({
-    origin: ["http://localhost:5173","employee-web-pi.vercel.app"],
+    origin: ["http://localhost:5173","https://employee-web-pi.vercel.app"],
   }),
 );
 //body parser middleware
