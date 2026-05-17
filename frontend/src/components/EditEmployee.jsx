@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router";
 import { useEffect } from "react";
 import axios from "axios";
-
+const BaseUrl=import.meta.env.Vite_Url || "https://employee-web-5b44.onrender.com";
 function EditEmployee() {
   const {
     register,
@@ -28,7 +28,7 @@ function EditEmployee() {
   const saveModifiedEmp = async (modifiedEmp) => {
     // console.log(modifiedEmp);
     //make HTTP PUT req
-    const res = await axios.put(`http://localhost:4000/emp-api/employees/${state._id}`, modifiedEmp);
+    const res = await axios.put(`${BaseUrl}/emp-api/employees/${state._id}`, modifiedEmp);
     if (res.status === 200) {
       //navigate to ListOfEMps
       navigate("/list");

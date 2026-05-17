@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-
+const BaseUrl=import.meta.env.Vite_Url || "https://employee-web-5b44.onrender.com";
 function ListOfEmps() {
   const [emps, setEmps] = useState([]);
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function ListOfEmps() {
   try {
 
     let res = await fetch(
-      `http://localhost:4000/emp-api/employees/${id}`,
+      `${BaseUrl}/emp-api/employees/${id}`,
       {
         method: "DELETE",
       }
@@ -41,7 +41,7 @@ function ListOfEmps() {
 };
   useEffect(() => {
     async function getEmps() {
-      let res = await fetch("http://localhost:4000/emp-api/employees");
+      let res = await fetch(`${BaseUrl}/emp-api/employees`);
       if (res.status === 200) {
         let resObj = await res.json();
         setEmps(resObj.payload);
